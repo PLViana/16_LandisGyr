@@ -462,8 +462,8 @@ html,body{
 
 const S = {
   screen:'upload', filtro:'TODOS', loadStep:0,
-  padrao:{doc:null,nome:''},
-  cliente:{doc:null,nome:''},
+  padrao:{doc:null,nome:'',raw:''},
+  cliente:{doc:null,nome:'',raw:''},
   diffs:[],
 };
 
@@ -494,7 +494,7 @@ function loadXML(file, zid, key) {
       if (!root) throw new Error('<ROOT> não encontrado.');
       const n = root.querySelectorAll('VAR').length;
       if (!n) throw new Error('Nenhum <VAR> encontrado.');
-      S[key].doc = doc; S[key].nome = file.name;
+      S[key].doc = doc; S[key].nome = file.name; S[key].raw = e.target.result;
       const z = document.getElementById(zid);
       z.classList.remove('err'); z.classList.add('loaded');
       $(`fz-icon-${key}`).textContent = '✅';
@@ -541,6 +541,38 @@ function runComparacao(){
   if(!S.padrao.doc||!S.cliente.doc) return;
   S.screen='loading'; S.loadStep=0;
   renderScreen();
+
+  if(window.chrome?.webview){
+    // Modo .exe: envia XML bruto ao C# (MainForm.cs → Comparar) e anima os steps
+    let step=0;
+    const iv=setInterval(()=>{
+      step++; S.loadStep=step;
+      const el=document.getElementById('l-steps');
+      if(el) el.innerHTML=stepsHtml(step);
+      if(step>=LOAD_STEPS.length) clearInterval(iv);
+    },260);
+    window.chrome.webview.postMessage({
+      tipo:'comparar', padrao:S.padrao.raw, cliente:S.cliente.raw
+    });
+  } else {
+    // Modo browser standalone: usa a reimplementação JavaScript
+    _runComparacaoJS();
+  }
+}
+
+// Callback chamado pelo C# (WebView2) com o resultado deserializado
+function receberResultado(diffs){
+  S.diffs=diffs; S.filtro='TODOS'; S.screen='result';
+  updateChips(); renderScreen();
+}
+
+// Callback chamado pelo C# em caso de erro
+function receberErro(msg){
+  S.screen='upload'; renderScreen();
+  alert('Erro na comparação (engine C#): '+msg);
+}
+
+function _runComparacaoJS(){
   let step=0;
   const iv=setInterval(()=>{
     step++; S.loadStep=step;
@@ -721,7 +753,7 @@ function setFilter(f,el){
 /* ── RESET ── */
 function resetar(){
   S.screen='upload'; S.diffs=[]; S.filtro='TODOS';
-  S.padrao={doc:null,nome:''}; S.cliente={doc:null,nome:''};
+  S.padrao={doc:null,nome:'',raw:''}; S.cliente={doc:null,nome:'',raw:''};
   ['padrao','cliente'].forEach(k=>{
     const z=document.getElementById('fz-'+k);
     z.classList.remove('loaded','err');
