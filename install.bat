@@ -112,6 +112,16 @@ if %ERRORLEVEL% neq 0 (
     pause
     exit /b 1
 )
+
+:: Confirma que o exe foi gerado
+if not exist "%DIST_DIR%\%EXE_NAME%" (
+    echo.
+    echo  ERRO: Compilacao concluida mas executavel nao foi gerado.
+    echo  Caminho esperado: %DIST_DIR%\%EXE_NAME%
+    echo.
+    pause
+    exit /b 1
+)
 echo       OK — Compilado em: %DIST_DIR%
 echo.
 
@@ -147,7 +157,7 @@ echo.
 
 set /p ABRIR="Abrir o Validador XML agora? (S/N): "
 if /i "%ABRIR%"=="S" (
-    start "" "%DIST_DIR%\%EXE_NAME%"
+    powershell -NoProfile -Command "Start-Process -FilePath '%DIST_DIR%\%EXE_NAME%'"
 )
 
 echo.
