@@ -13,7 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2849.39" />
+    <!-- Versao 1.0.1823.32 = Edge 108 (out/2022) — compativel com a maioria dos runtimes instalados -->
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1823.32" />
   </ItemGroup>
 
   <ItemGroup>

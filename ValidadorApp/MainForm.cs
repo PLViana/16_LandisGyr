@@ -51,11 +51,16 @@ public sealed class MainForm : Form
         }
         catch (Exception ex)
         {
-            MostrarErro(
-                "Falha ao inicializar o Microsoft Edge WebView2.\n\n" +
-                $"Detalhe: {ex.Message}\n\n" +
-                "Verifique se o WebView2 Runtime está instalado:\n" +
-                "https://aka.ms/webview2");
+            var msg = ex.Message.Contains("ICoreWebView2") || ex is InvalidCastException
+                ? "Versão do WebView2 Runtime incompatível com este programa.\n\n" +
+                  "Solução: atualize o Microsoft Edge no computador.\n" +
+                  "  Abra o Edge → Configurações → Sobre o Microsoft Edge\n\n" +
+                  $"Detalhe técnico: {ex.Message}"
+                : "Falha ao inicializar o Microsoft Edge WebView2.\n\n" +
+                  $"Detalhe: {ex.Message}\n\n" +
+                  "Verifique se o Microsoft Edge está instalado e atualizado.";
+
+            MostrarErro(msg);
         }
     }
 
