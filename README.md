@@ -46,7 +46,8 @@ O executável gerado fica em:
 ```
 16_LandisGyr/
 ├── abrir.bat                  # Abre o validador no navegador (uso imediato)
-├── install.bat                # Compila e instala o .exe (requer internet na 1a vez)
+├── install.bat                # Lanca o instalador PowerShell
+├── install.ps1                # Logica de instalacao (verifica SDK, compila, cria atalho)
 ├── global.json                # Versão do .NET SDK exigida (10.0.x)
 ├── validador.html             # Interface web standalone
 │

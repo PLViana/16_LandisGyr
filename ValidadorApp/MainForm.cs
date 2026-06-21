@@ -77,12 +77,15 @@ public sealed class MainForm : Form
 
     private void OnMensagemJS(object? _, CoreWebView2WebMessageReceivedEventArgs e)
     {
+        // Lê o objeto COM na thread de UI (STA) antes de ir para o background
+        var webMessageJson = e.WebMessageAsJson;
+
         // Executa em background para não travar a UI
         Task.Run(() =>
         {
             try
             {
-                var msg = JsonSerializer.Deserialize<MensagemJS>(e.WebMessageAsJson, _jsonOpts);
+                var msg = JsonSerializer.Deserialize<MensagemJS>(webMessageJson, _jsonOpts);
                 if (msg is null || msg.Tipo != "comparar") return;
 
                 if (string.IsNullOrWhiteSpace(msg.Padrao) || string.IsNullOrWhiteSpace(msg.Cliente))
