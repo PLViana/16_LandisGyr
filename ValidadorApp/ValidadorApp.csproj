@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ValidadorXML</AssemblyName>
+    <RootNamespace>ValidadorApp</RootNamespace>
+    <ApplicationIcon />
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Versao 1.0.1823.32 = Edge 108 (out/2022) — compativel com a maioria dos runtimes instalados -->
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1823.32" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- HTML embutido no executável como recurso — não precisa de arquivo externo -->
+    <EmbeddedResource Include="validador.html" />
+  </ItemGroup>
+
+</Project>

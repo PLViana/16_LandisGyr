@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "cffvgkU95/A=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\caudo\\Desktop\\Projetos\\Landys+gyr\\16_LandisGyr\\ValidadorApp\\ValidadorApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\caudo\\.nuget\\packages\\microsoft.net.illink.tasks\\10.0.9\\microsoft.net.illink.tasks.10.0.9.nupkg.sha512",
+    "C:\\Users\\caudo\\.nuget\\packages\\microsoft.web.webview2\\1.0.1823.32\\microsoft.web.webview2.1.0.1823.32.nupkg.sha512",
+    "C:\\Users\\caudo\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.9\\microsoft.netcore.app.runtime.win-x64.10.0.9.nupkg.sha512",
+    "C:\\Users\\caudo\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.9\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.9.nupkg.sha512",
+    "C:\\Users\\caudo\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.9\\microsoft.aspnetcore.app.runtime.win-x64.10.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

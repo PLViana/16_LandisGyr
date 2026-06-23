@@ -1,0 +1,14 @@
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\bin\Debug\net10.0\ChecklistValidator.exe
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\bin\Debug\net10.0\ChecklistValidator.deps.json
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\bin\Debug\net10.0\ChecklistValidator.runtimeconfig.json
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\bin\Debug\net10.0\ChecklistValidator.dll
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\bin\Debug\net10.0\ChecklistValidator.pdb
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ChecklistValidator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ChecklistValidator.AssemblyInfoInputs.cache
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ChecklistValidator.AssemblyInfo.cs
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ChecklistValidator.csproj.CoreCompileInputs.cache
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ChecklistValidator.dll
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\refint\ChecklistValidator.dll
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ChecklistValidator.pdb
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ChecklistValidator.genruntimeconfig.cache
+C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ref\ChecklistValidator.dll
