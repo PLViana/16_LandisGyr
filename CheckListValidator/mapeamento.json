@@ -1,0 +1,77 @@
+[
+  {
+    "CampoPdf": "Tipo do Config",
+    "CodXml": "CARACTERISTICA_MEDIDOR",
+    "Valores": {
+      "E650 G2 Select": "12"
+    }
+  },
+  {
+    "CampoPdf": "Modelo do Medidor",
+    "CodXml": "CARACTERISTICA_MEDIDOR",
+    "Valores": {
+      "E650 G2 Select": "12"
+    }
+  },
+  {
+    "CampoPdf": "Qualidade de Energia",
+    "CodXml": "QUALIDADE_ENERGIA",
+    "Valores": {
+      "Habilitado": "01",
+      "Desabilitado": "00"
+    }
+  },
+  {
+    "CampoPdf": "Número de Canais",
+    "CodXml": "NUMERO_CANAIS",
+    "Valores": {
+      "21 canais": "06"
+    }
+  },
+  {
+    "CampoPdf": "Saída do Usuário",
+    "CodXml": "SAIDA_USUARIO",
+    "Valores": {
+      "Habilitado": "01",
+      "Desabilitado": "00"
+    }
+  },
+  {
+    "CampoPdf": "Condição da Senha",
+    "CodXml": "CONDICAO_SENHA",
+    "Valores": {
+      "Senha Específica do Cliente": "01"
+    }
+  },
+  {
+    "CampoPdf": "Harmônico na Energia Ativa",
+    "CodXml": "HAR_ENERGIA_ATIVA",
+    "Valores": {
+      "Com Harmônicos": "01",
+      "Sem Harmônicos": "00"
+    }
+  },
+  {
+    "CampoPdf": "Harmônico na Energia Reativa",
+    "CodXml": "HAR_ENERGIA_REATIVA",
+    "Valores": {
+      "Com Harmônicos": "01",
+      "Sem Harmônicos": "00"
+    }
+  },
+  {
+    "CampoPdf": "Método de Cálculo",
+    "CodXml": "METODO_CALCULO",
+    "Valores": {
+      "Catraca": "00"
+    }
+  },
+  {
+    "CampoPdf": "Exibição dos Zeros à Esquerda",
+    "CodXml": "ZEROS_ESQUERDA",
+    "Valores": {
+      "Habilitado": "01",
+      "Desabilitado": "00"
+    }
+  }
+]

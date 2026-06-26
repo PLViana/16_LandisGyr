@@ -4,10 +4,14 @@ using System.Text.Json;
 
 try
 {
+    PdfConverter pdf = new();
+
     var resultado = ChecklistValidato.Validar(
-        "padrao.xml",
-        "cliente.xml"
-    );
+    
+            "FolhaParametro.pdf",
+             "padrao.xml"
+        );
+
 
     if (resultado.Count == 0)
     {
@@ -27,10 +31,17 @@ try
         }
     }
 
-    File.WriteAllText(
+    var resultadoJson = new
+{
+    Status = resultado.Count == 0 ? "PASS" : "FAIL",
+    QuantidadeErros = resultado.Count,
+    Diferencas = resultado
+};
+
+        File.WriteAllText(
         "resultado.json",
         JsonSerializer.Serialize(
-            resultado,
+            resultadoJson,
             new JsonSerializerOptions
             {
                 WriteIndented = true

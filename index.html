@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landis+Gyr — Validação de Parâmetros XML</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  height:100%;font-family:"Segoe UI",system-ui,Arial,sans-serif;
+  font-size:13px;color:#1A1A1A;background:#ECEFF3;
+  overflow:hidden;-webkit-font-smoothing:antialiased;
+}
+:root{
+  --gd:#004225;--gm:#006633;--gl:#8DC63F;--gp:#E5F2EA;
+  --bg:#ECEFF3;--white:#fff;--border:#DDE3DC;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 30px rgba(0,0,0,.12),0 4px 8px rgba(0,0,0,.06);
+  --ease:cubic-bezier(.4,0,.2,1);
+  --sw:282px;--hh:64px;--fh:56px;
+}
+
+/* ── SHELL ── */
+#app{display:flex;flex-direction:column;height:100vh;overflow:hidden}
+#main{display:flex;flex:1;overflow:hidden}
+
+/* ── HEADER ── */
+#header{
+  height:var(--hh);flex-shrink:0;
+  background:linear-gradient(100deg,#002B1A 0%,#004225 40%,#005A32 100%);
+  display:flex;align-items:center;justify-content:space-between;padding:0 22px;
+  box-shadow:0 2px 12px rgba(0,0,0,.35);position:relative;z-index:10;
+}
+#header::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(255,255,255,.04),transparent);
+  pointer-events:none;
+}
+.logo{font-size:23px;font-weight:800;color:#fff;letter-spacing:-.6px;
+  text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.logo-plus{color:#8DC63F}
+.h-sep{width:1px;height:34px;background:rgba(255,255,255,.15);margin:0 18px;flex-shrink:0}
+.h-title{font-size:14.5px;color:#C8E0D0;font-weight:400;letter-spacing:.1px}
+.h-sub{font-size:11px;color:#6E9A7E;margin-top:2px}
+.h-left{display:flex;align-items:center}
+.h-right{display:flex;align-items:center}
+.rev-badge{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+  color:#8DC63F;font-size:10px;font-weight:700;padding:4px 11px;
+  border-radius:10px;letter-spacing:.6px;
+}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sw);min-width:var(--sw);background:var(--white);
+  border-right:1px solid var(--border);display:flex;flex-direction:column;
+  overflow:hidden;box-shadow:2px 0 8px rgba(0,0,0,.04);
+}
+
+/* Upload info panel (sidebar, upload state) */
+#upload-info{
+  padding:18px 16px 14px;border-bottom:1px solid #E8EDEA;flex-shrink:0;
+  background:linear-gradient(to bottom,#FAFAFA,#F5F7F5);
+}
+.panel-lbl{
+  font-size:9.5px;font-weight:700;color:#AAB4AA;
+  letter-spacing:1.4px;margin-bottom:12px;text-transform:uppercase;
+}
+.info-step{
+  display:flex;align-items:flex-start;gap:10px;padding:9px 0;
+  border-bottom:1px solid #F0F4F0;
+}
+.info-step:last-child{border-bottom:none}
+.step-num{
+  width:20px;height:20px;background:var(--gm);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;
+}
+.info-step-text{font-size:12px;color:#555;line-height:1.55}
+.info-step-text strong{color:var(--gd)}
+.info-hint{font-size:10.5px;color:#BBB;margin-top:12px;line-height:1.6;padding-top:10px;border-top:1px solid #F0F4F0}
+
+/* Filter nav */
+.nav-sec-lbl{
+  font-size:9.5px;font-weight:700;color:#AAB4AA;
+  letter-spacing:1.4px;padding:13px 16px 5px;text-transform:uppercase;flex-shrink:0;
+}
+#filter-nav{flex:1;overflow-y:auto}
+#filter-nav::-webkit-scrollbar{width:4px}
+#filter-nav::-webkit-scrollbar-thumb{background:#D0D8D0;border-radius:4px}
+.filt-item{
+  display:flex;align-items:center;height:34px;padding:0 16px;
+  cursor:pointer;font-size:12.5px;color:#3A3A3A;
+  transition:background .12s var(--ease),color .12s var(--ease);
+  user-select:none;gap:8px;border-left:3px solid transparent;
+}
+.filt-item:hover{background:#F2F8F4;color:var(--gd)}
+.filt-item.active{
+  background:#E8F3EC;color:var(--gd);font-weight:600;border-left-color:var(--gm);
+}
+.fc{
+  margin-left:auto;font-size:11px;font-weight:700;
+  min-width:24px;text-align:center;padding:1px 7px;
+  border-radius:10px;background:#F0F0F0;color:#666;
+}
+.filt-item.active .fc{background:var(--gm);color:#fff}
+.fc.c-a{background:#FFF8E1;color:#E65100}
+.fc.c-e{background:#E3F2FD;color:#1565C0}
+.fc.c-d{background:#FFEBEE;color:#C62828}
+.filt-item.active .fc.c-a{background:#E65100;color:#fff}
+.filt-item.active .fc.c-e{background:#1565C0;color:#fff}
+.filt-item.active .fc.c-d{background:#C62828;color:#fff}
+
+/* Sidebar chips */
+#val-sum{padding:12px 14px;border-top:1px solid #EEF2EE;flex-shrink:0;background:#FAFCFA}
+.vs-title{font-size:9.5px;font-weight:700;color:#AAB4AA;letter-spacing:1.4px;margin-bottom:10px;text-transform:uppercase}
+.chip-row{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.chip{min-width:38px;text-align:center;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700;box-shadow:var(--shadow-sm)}
+.ch-t{background:#E8E8E8;color:#333;border:1px solid #C8C8C8}
+.ch-a{background:#FFF8E1;color:#E65100;border:1px solid #FFCC80}
+.ch-e{background:#E3F2FD;color:#1565C0;border:1px solid #90CAF9}
+.ch-d{background:#FFEBEE;color:#C62828;border:1px solid #EF9A9A}
+.chip-lbl{font-size:11.5px;color:#888}
+
+/* ── CONTENT ── */
+#content-area{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
+#breadcrumb{
+  font-size:11px;color:#AAA;padding:9px 24px 0;flex-shrink:0;
+  min-height:25px;display:flex;align-items:center;gap:5px;
+}
+#page-content{flex:1;overflow-y:auto;padding:12px 20px 16px}
+#page-content::-webkit-scrollbar{width:6px}
+#page-content::-webkit-scrollbar-thumb{background:#C8CCC8;border-radius:4px}
+
+/* ── UPLOAD PANEL (main area, upload state) ── */
+#upload-panel{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:28px 36px;gap:20px;overflow:hidden;
+}
+.big-zones-row{
+  display:flex;gap:0;width:100%;max-width:820px;flex:1;max-height:300px;
+  border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  box-shadow:var(--shadow-md);
+}
+.file-zone-big{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:14px;padding:28px 24px;cursor:pointer;background:var(--white);
+  transition:border-color .18s var(--ease),background .18s var(--ease);
+  position:relative;outline:none;border:2px dashed transparent;
+}
+.file-zone-big:first-child{border-right:1px solid var(--border)}
+.file-zone-big:hover,.file-zone-big.drag-over{background:var(--gp)}
+.file-zone-big.loaded{background:#F0F9E8}
+.file-zone-big.err{background:#FFF5F5}
+.fzb-icon{font-size:40px;line-height:1;transition:transform .2s var(--ease)}
+.file-zone-big:hover .fzb-icon,.file-zone-big.drag-over .fzb-icon{transform:scale(1.1)}
+.fzb-tag{
+  font-size:9px;font-weight:700;color:#AAB4AA;letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+.fzb-name{
+  font-size:15px;font-weight:700;color:#555;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;
+}
+.fzb-sub{font-size:11.5px;color:#AAA;text-align:center}
+.file-zone-big.loaded .fzb-name{color:var(--gd)}
+.file-zone-big.loaded .fzb-sub{color:#4A8A25}
+.file-zone-big.err .fzb-name{color:#C62828}
+.file-zone-big.err .fzb-sub{color:#C62828}
+.zones-divider{
+  width:1px;background:var(--border);display:flex;align-items:center;
+  justify-content:center;position:relative;flex-shrink:0;
+}
+.zones-vs{
+  position:absolute;background:#F0F4F0;border:1px solid var(--border);
+  border-radius:50%;width:30px;height:30px;display:flex;align-items:center;
+  justify-content:center;font-size:10px;font-weight:700;color:#AAA;
+  letter-spacing:.5px;z-index:1;
+}
+
+/* Compare button (upload panel) */
+.btn-cmp-main{
+  border:none;border-radius:9px;padding:12px 48px;
+  font-size:14px;font-weight:700;color:#fff;cursor:pointer;
+  position:relative;overflow:hidden;flex-shrink:0;
+  transition:transform .18s var(--ease),box-shadow .18s var(--ease),filter .18s;
+  background:linear-gradient(to bottom,#007A3D,#004225);
+  box-shadow:0 3px 10px rgba(0,66,37,.45),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.btn-cmp-main::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:50%;
+  background:linear-gradient(to bottom,rgba(255,255,255,.15),transparent);pointer-events:none;
+}
+.btn-cmp-main:not(:disabled):hover{
+  transform:translateY(-2px);filter:brightness(1.1);
+  box-shadow:0 6px 16px rgba(0,66,37,.5),inset 0 1px 0 rgba(255,255,255,.15);
+}
+.btn-cmp-main:not(:disabled):active{transform:translateY(1px);box-shadow:0 1px 4px rgba(0,66,37,.35)}
+.btn-cmp-main:disabled{
+  background:linear-gradient(to bottom,#B0B8B0,#909890);
+  box-shadow:none;cursor:not-allowed;
+}
+
+/* ── FOOTER ── */
+#footer{
+  height:var(--fh);flex-shrink:0;background:var(--white);
+  border-top:1px solid var(--border);display:flex;align-items:center;
+  padding:0 20px;gap:8px;box-shadow:0 -2px 8px rgba(0,0,0,.04);
+}
+.f-space{flex:1}
+.btn-fg{
+  background:transparent;color:#666;border:1.5px solid #CCC;border-radius:6px;
+  padding:8px 15px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;
+  transition:all .18s var(--ease);display:flex;align-items:center;gap:5px;
+}
+.btn-fg:hover{background:#F5F5F5;border-color:#AAA;color:#333;transform:translateY(-1px)}
+.btn-fg:active{transform:translateY(0)}
+.btn-fa{
+  background:transparent;color:var(--gm);border:1.5px solid var(--gm);border-radius:6px;
+  padding:8px 15px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;
+  transition:all .18s var(--ease);display:flex;align-items:center;gap:5px;
+}
+.btn-fa:hover{background:var(--gp);transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,102,51,.15)}
+.btn-fa:active{transform:translateY(0)}
+.btn-fa:disabled{color:#BBB;border-color:#DDD;cursor:not-allowed}
+.btn-fa:disabled:hover{background:transparent;transform:none;box-shadow:none}
+
+/* Search */
+.search-wrap{position:relative;max-width:240px}
+.search-wrap::before{
+  content:'⌕';position:absolute;left:9px;top:50%;transform:translateY(-50%);
+  font-size:15px;color:#AAA;pointer-events:none;line-height:1;
+}
+.search-input{
+  width:100%;border:1px solid #CDD4CD;border-radius:6px;
+  padding:6px 10px 6px 27px;font-size:12px;font-family:inherit;
+  color:#333;background:var(--white);outline:none;
+  transition:border-color .15s,box-shadow .15s;box-shadow:var(--shadow-sm);
+}
+.search-input:focus{border-color:var(--gm);box-shadow:0 0 0 3px rgba(0,102,51,.1)}
+
+/* ── LOADING SCREEN ── */
+.loading-screen{display:flex;align-items:center;justify-content:center;height:100%}
+.loading-wrap{text-align:center;max-width:380px;animation:fadeUp .3s var(--ease) both}
+.spinner-ring{width:60px;height:60px;position:relative;margin:0 auto 26px}
+.spinner-ring::before,.spinner-ring::after{
+  content:'';position:absolute;inset:0;border-radius:50%;border:3.5px solid transparent;
+}
+.spinner-ring::before{border-top-color:var(--gm);animation:spin .8s linear infinite}
+.spinner-ring::after{border-bottom-color:rgba(141,198,63,.4);animation:spin 1.4s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-title{font-size:18px;font-weight:700;color:#1A1A1A;margin-bottom:8px;letter-spacing:-.2px}
+.loading-sub{font-size:13px;color:#888;line-height:1.7}
+.loading-steps{
+  margin-top:26px;text-align:left;display:inline-block;
+  background:#F8FAF8;border:1px solid #E4EAE4;border-radius:8px;
+  padding:12px 16px;min-width:280px;
+}
+.lstep{font-size:12px;color:#BBB;padding:5px 0;display:flex;align-items:center;gap:10px;transition:color .25s}
+.lstep.done{color:#2E7D32}
+.lstep.done::before{content:'✓';font-weight:700;font-size:13px;width:14px;flex-shrink:0}
+.lstep:not(.done):not(.cur)::before{content:'○';font-size:11px;width:14px;flex-shrink:0;color:#DDD}
+.lstep.cur{color:var(--gm);font-weight:600}
+.lstep.cur::before{content:'›';font-size:15px;font-weight:700;width:14px;flex-shrink:0;animation:flick .6s ease infinite alternate}
+@keyframes flick{from{opacity:.5}to{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESULT BANNER ── */
+.result-screen{padding:2px 0;animation:fadeUp .35s var(--ease) both}
+.result-banner{
+  border-radius:12px;padding:24px 26px;margin-bottom:16px;
+  display:flex;align-items:center;gap:20px;position:relative;overflow:hidden;
+}
+.result-banner::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:55%;
+  background:linear-gradient(to bottom,rgba(255,255,255,.12),transparent);pointer-events:none;
+}
+.result-banner::after{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(135deg,transparent,transparent 20px,rgba(0,0,0,.02) 20px,rgba(0,0,0,.02) 21px);
+  pointer-events:none;
+}
+.rb-pass{background:linear-gradient(120deg,#1B5E20 0%,#2E7D32 60%,#388E3C 100%);color:#fff}
+.rb-fail{background:linear-gradient(120deg,#6A0000 0%,#B71C1C 60%,#C62828 100%);color:#fff}
+.rb-icon{
+  width:66px;height:66px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:30px;flex-shrink:0;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);position:relative;z-index:1;
+}
+.rb-pass .rb-icon{background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.3)}
+.rb-fail .rb-icon{background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.25)}
+.rb-body{flex:1;position:relative;z-index:1}
+.rb-title{font-size:19px;font-weight:700;margin-bottom:5px;letter-spacing:-.2px}
+.rb-sub{font-size:13px;opacity:.88;line-height:1.6}
+.rb-meta{font-size:11px;opacity:.65;margin-top:8px;display:flex;flex-wrap:wrap;gap:4px 16px}
+.rb-meta span+span::before{content:'· '}
+.rb-actions{display:flex;gap:9px;flex-shrink:0;position:relative;z-index:1}
+.btn-rb-nova{
+  background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.45);
+  border-radius:7px;padding:9px 17px;font-size:12px;font-weight:600;cursor:pointer;
+  transition:background .18s,transform .18s var(--ease),box-shadow .18s;
+}
+.btn-rb-nova:hover{background:rgba(255,255,255,.28);transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.btn-rb-nova:active{transform:translateY(1px)}
+
+/* ── DIFF TABLE CARD ── */
+.tbl-card{
+  background:var(--white);border:1px solid var(--border);border-radius:10px;
+  overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:14px;
+}
+.tbl-card-hdr{
+  background:linear-gradient(to bottom,#F8FAF8,#F3F7F4);
+  border-bottom:1px solid #E4EAE4;padding:12px 20px;
+  display:flex;align-items:center;gap:10px;
+}
+.tbl-card-title{font-size:14px;font-weight:700;color:var(--gd);flex:1}
+.cbadge{font-size:11px;font-weight:700;padding:3px 12px;border-radius:10px;box-shadow:var(--shadow-sm)}
+.cbadge-f{background:#FFEBEE;color:#C62828;border:1px solid #EF9A9A}
+.cbadge-p{background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7}
+
+.diff-tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.diff-tbl thead th{
+  background:#F5F8F5;color:var(--gd);font-weight:700;
+  padding:9px 14px;text-align:left;border-bottom:2px solid #C8DFC8;
+  font-size:11px;letter-spacing:.4px;text-transform:uppercase;
+}
+.diff-tbl tbody tr{transition:background .1s}
+.diff-tbl tbody tr:nth-child(even){background:#F9FCF9}
+.diff-tbl tbody tr:hover{background:#F1F8F2}
+.diff-tbl tbody td{padding:9px 14px;border-bottom:1px solid #F0F4F0;vertical-align:top}
+.diff-tbl tbody tr:last-child td{border-bottom:none}
+.td-cod{font-weight:600;color:#1A1A8C;white-space:nowrap}
+.td-exp{color:#2E7D32;font-weight:500}
+.td-enc{color:#C62828;font-weight:500}
+
+.dbadge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:9px;white-space:nowrap}
+.db-aus{background:#FFF3CD;color:#7A5A00;border:1px solid #E0B840}
+.db-ext{background:#CCE5FF;color:#003580;border:1px solid #80AAE0}
+.db-div{background:#FFEBEE;color:#7A1010;border:1px solid #E0A0A0}
+
+/* Val cell expand */
+.val-short{display:block;word-break:break-all;font-family:'Courier New',monospace;font-size:11px;line-height:1.5;overflow:hidden;max-height:46px}
+.val-full{display:none;word-break:break-all;font-family:'Courier New',monospace;font-size:11px;line-height:1.5}
+.val-full.open{display:block}
+.val-short.hide{display:none}
+.val-toggle{font-size:10px;color:var(--gm);cursor:pointer;text-decoration:underline;display:inline-block;margin-top:2px}
+
+/* Empty */
+.empty-state{text-align:center;padding:48px;color:#888;font-size:13px;line-height:1.8}
+.empty-icon{font-size:36px;display:block;margin-bottom:12px}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <header id="header">
+    <div class="h-left">
+      <div class="logo">Landis<span class="logo-plus">+</span>Gyr</div>
+      <div class="h-sep"></div>
+      <div>
+        <div class="h-title">Validação de Parâmetros XML do Medidor</div>
+        <div class="h-sub">Comparação Automática Padrão vs. Cliente · E650 G2</div>
+      </div>
+    </div>
+    <div class="h-right">
+      <span class="rev-badge">Rev. 2.0.0</span>
+    </div>
+  </header>
+
+  <div id="main">
+
+    <aside id="sidebar">
+
+      <!-- Upload state: instructions -->
+      <div id="upload-info">
+        <div class="panel-lbl">Como usar</div>
+        <div class="info-step">
+          <span class="step-num">1</span>
+          <span class="info-step-text">Arraste o <strong>XML Padrão</strong> (gabarito) na zona da esquerda</span>
+        </div>
+        <div class="info-step">
+          <span class="step-num">2</span>
+          <span class="info-step-text">Arraste o <strong>XML Cliente</strong> (medidor) na zona da direita</span>
+        </div>
+        <div class="info-step">
+          <span class="step-num">3</span>
+          <span class="info-step-text">Clique em <strong>Comparar Arquivos</strong> para iniciar a análise</span>
+        </div>
+        <div class="info-hint">Formatos aceitos: .xml<br>Nenhum dado é enviado a servidores externos</div>
+      </div>
+
+      <!-- Result state: filters -->
+      <div class="nav-sec-lbl" id="flbl" style="display:none">Filtros</div>
+      <nav id="filter-nav" style="display:none">
+        <div class="filt-item active" onclick="setFilter('TODOS',this)">
+          Todos os parâmetros<span class="fc" id="fc-t">—</span>
+        </div>
+        <div class="filt-item" onclick="setFilter('PARAMETRO_AUSENTE',this)">
+          Parâmetros ausentes<span class="fc c-a" id="fc-a">—</span>
+        </div>
+        <div class="filt-item" onclick="setFilter('PARAMETRO_EXTRA',this)">
+          Parâmetros extras<span class="fc c-e" id="fc-e">—</span>
+        </div>
+        <div class="filt-item" onclick="setFilter('VL',this)">
+          Divergência de VL<span class="fc c-d" id="fc-vl">—</span>
+        </div>
+        <div class="filt-item" onclick="setFilter('IX',this)">
+          Divergência de IX<span class="fc c-d" id="fc-ix">—</span>
+        </div>
+      </nav>
+
+      <!-- Always: summary chips -->
+      <div id="val-sum">
+        <div class="vs-title">Resumo da Validação</div>
+        <div class="chip-row"><span class="chip ch-t" id="ct">—</span><span class="chip-lbl">divergências no total</span></div>
+        <div class="chip-row"><span class="chip ch-a" id="ca">—</span><span class="chip-lbl">parâmetros ausentes</span></div>
+        <div class="chip-row"><span class="chip ch-e" id="ce">—</span><span class="chip-lbl">parâmetros extras</span></div>
+        <div class="chip-row"><span class="chip ch-d" id="cd">—</span><span class="chip-lbl">valores divergentes</span></div>
+      </div>
+    </aside>
+
+    <div id="content-area">
+
+      <!-- Upload panel: big file zones in main area -->
+      <div id="upload-panel">
+        <div class="big-zones-row">
+
+          <div class="file-zone-big" id="fz-padrao" tabindex="0"
+               onclick="triggerInput('inp-padrao')"
+               ondragover="onDragOver(event,'fz-padrao')"
+               ondragleave="onDragLeave('fz-padrao')"
+               ondrop="onDrop(event,'fz-padrao','padrao')">
+            <input type="file" id="inp-padrao" accept=".xml,.pdf" style="display:none"
+                   onchange="onFileInput(this,'fz-padrao','padrao')">
+            <span class="fzb-icon" id="fz-icon-padrao">📄</span>
+            <div class="fzb-tag">Padrão (Gabarito)</div>
+            <div class="fzb-name" id="fz-name-padrao">padrao.xml / folha.pdf</div>
+            <div class="fzb-sub"  id="fz-sub-padrao">Arraste um arquivo .xml ou .pdf</div>
+          </div>
+
+          <div class="zones-divider"><span class="zones-vs">vs</span></div>
+
+          <div class="file-zone-big" id="fz-cliente" tabindex="0"
+               onclick="triggerInput('inp-cliente')"
+               ondragover="onDragOver(event,'fz-cliente')"
+               ondragleave="onDragLeave('fz-cliente')"
+               ondrop="onDrop(event,'fz-cliente','cliente')">
+            <input type="file" id="inp-cliente" accept=".xml,.pdf" style="display:none"
+                   onchange="onFileInput(this,'fz-cliente','cliente')">
+            <span class="fzb-icon" id="fz-icon-cliente">📄</span>
+            <div class="fzb-tag">Cliente (Medidor)</div>
+            <div class="fzb-name" id="fz-name-cliente">cliente.xml / folha.pdf</div>
+            <div class="fzb-sub"  id="fz-sub-cliente">Arraste um arquivo .xml ou .pdf</div>
+          </div>
+
+        </div>
+
+        <button class="btn-cmp-main" id="btn-cmp" disabled onclick="runComparacao()">
+          ▶ &nbsp; Comparar Arquivos
+        </button>
+      </div>
+
+      <!-- Loading / Result content -->
+      <div id="breadcrumb"></div>
+      <div id="page-content"></div>
+
+      <footer id="footer">
+        <button class="btn-fg" id="btn-nova" onclick="resetar()" style="display:none">
+          ↺ Nova Validação
+        </button>
+        <div class="f-space"></div>
+        <div class="search-wrap" id="search-wrap" style="display:none">
+          <input type="text" class="search-input" id="search-input"
+                 placeholder="Buscar por COD..." oninput="renderTabela()">
+        </div>
+        <div class="f-space"></div>
+        <button class="btn-fa" id="btn-json" disabled onclick="exportarJSON()">💾 Salvar JSON</button>
+        <button class="btn-fa" id="btn-csv"  disabled onclick="exportarCSV()">📊 Exportar CSV</button>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+const S = {
+  screen:'upload', filtro:'TODOS', loadStep:0,
+  padrao:{doc:null,nome:'',raw:''},
+  cliente:{doc:null,nome:'',raw:''},
+  diffs:[],
+};
+
+const LOAD_STEPS = [
+  'Lendo arquivo XML do padrão...',
+  'Lendo arquivo XML do cliente...',
+  'Indexando parâmetros do padrão...',
+  'Comparando parâmetros com o cliente...',
+  'Verificando atributos VL e IX...',
+  'Identificando parâmetros extras...',
+  'Gerando relatório de divergências...',
+];
+
+/* ── MAPEAMENTO PDF → XML (espelho de mapeamento.json) ── */
+const MAPEAMENTO = [
+  { CampoPdf: 'Tipo do Config',                CodXml: 'CARACTERISTICA_MEDIDOR', Valores: { 'E650 G2 Select': '12' } },
+  { CampoPdf: 'Modelo do Medidor',             CodXml: 'CARACTERISTICA_MEDIDOR', Valores: { 'E650 G2 Select': '12' } },
+  { CampoPdf: 'Qualidade de Energia',          CodXml: 'QUALIDADE_ENERGIA',       Valores: { 'Habilitado': '01', 'Desabilitado': '00' } },
+  { CampoPdf: 'Número de Canais',              CodXml: 'NUMERO_CANAIS',           Valores: { '21 canais': '06' } },
+  { CampoPdf: 'Saída do Usuário',              CodXml: 'SAIDA_USUARIO',           Valores: { 'Habilitado': '01', 'Desabilitado': '00' } },
+  { CampoPdf: 'Condição da Senha',             CodXml: 'CONDICAO_SENHA',          Valores: { 'Senha Específica do Cliente': '01' } },
+  { CampoPdf: 'Harmônico na Energia Ativa',    CodXml: 'HAR_ENERGIA_ATIVA',       Valores: { 'Com Harmônicos': '01', 'Sem Harmônicos': '00' } },
+  { CampoPdf: 'Harmônico na Energia Reativa',  CodXml: 'HAR_ENERGIA_REATIVA',     Valores: { 'Com Harmônicos': '01', 'Sem Harmônicos': '00' } },
+  { CampoPdf: 'Método de Cálculo',             CodXml: 'METODO_CALCULO',          Valores: { 'Catraca': '00' } },
+  { CampoPdf: 'Exibição dos Zeros à Esquerda', CodXml: 'ZEROS_ESQUERDA',          Valores: { 'Habilitado': '01', 'Desabilitado': '00' } },
+];
+
+/* Extrai pares chave:valor da pág. 1 do PDF (replica PdfConverter.cs) */
+async function lerParametrosPdf(arrayBuffer) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const pdfDoc  = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  const page    = await pdfDoc.getPage(1);
+  const content = await page.getTextContent();
+
+  const TOLS = 3;
+  const grupos = new Map();
+  for (const item of content.items) {
+    if (!item.str.trim()) continue;
+    const y = Math.round(item.transform[5] / TOLS);
+    if (!grupos.has(y)) grupos.set(y, []);
+    grupos.get(y).push(item);
+  }
+
+  const parametros = {};
+  const linhas = [...grupos.entries()]
+    .sort((a, b) => b[0] - a[0])
+    .map(([, items]) => items.sort((a, b) => a.transform[4] - b.transform[4]));
+
+  for (const linha of linhas) {
+    const texto = linha.map(i => i.str).join(' ').trim();
+    const idx = texto.indexOf(':');
+    if (idx < 1) continue;
+    const chave = texto.slice(0, idx).trim();
+    const valor = texto.slice(idx + 1).trim();
+    if (chave && valor) parametros[chave] = valor;
+  }
+  return parametros;
+}
+
+/* Converte dict de parâmetros num DOM ROOT > VAR (mesmo formato do XML) */
+function construirDocDoPdf(parametros) {
+  const doc = new DOMParser().parseFromString('<ROOT></ROOT>', 'application/xml');
+  for (const item of MAPEAMENTO) {
+    const vl = parametros[item.CampoPdf] ?? '';
+    const ix = (item.Valores && item.Valores[vl]) ?? '';
+    const el = doc.createElement('VAR');
+    el.setAttribute('COD', item.CodXml);
+    el.setAttribute('VL', vl);
+    el.setAttribute('IX', ix);
+    doc.querySelector('ROOT').appendChild(el);
+  }
+  return doc;
+}
+
+/* ── FILE ZONES ── */
+function triggerInput(id){ document.getElementById(id).click(); }
+function onDragOver(e,z){ e.preventDefault(); document.getElementById(z).classList.add('drag-over'); }
+function onDragLeave(z){ document.getElementById(z).classList.remove('drag-over'); }
+function onDrop(e,z,k){ e.preventDefault(); onDragLeave(z); const f=e.dataTransfer.files[0]; if(f) loadArquivo(f,z,k); }
+function onFileInput(inp,z,k){ const f=inp.files[0]; if(f) loadArquivo(f,z,k); }
+
+function loadArquivo(file, zid, key) {
+  const ext = file.name.split('.').pop().toLowerCase();
+  if (ext === 'pdf') carregarPdf(file, zid, key);
+  else               carregarXml(file, zid, key);
+}
+
+function carregarXml(file, zid, key) {
+  const fr = new FileReader();
+  fr.onload = e => {
+    try {
+      const doc = new DOMParser().parseFromString(e.target.result, 'application/xml');
+      if (doc.querySelector('parsererror')) throw new Error('XML malformado.');
+      const root = doc.querySelector('ROOT');
+      if (!root) throw new Error('<ROOT> não encontrado.');
+      const n = root.querySelectorAll('VAR').length;
+      if (!n) throw new Error('Nenhum <VAR> encontrado.');
+      S[key].doc = doc; S[key].nome = file.name; S[key].raw = e.target.result;
+      zonaOk(zid, key, file.name, '📄', `${n} parâmetros · ${(file.size/1024).toFixed(1)} KB`);
+    } catch (err) {
+      zonaErro(zid, key, err.message);
+    }
+    $('btn-cmp').disabled = !(S.padrao.doc && S.cliente.doc);
+  };
+  fr.readAsText(file, 'UTF-8');
+}
+
+async function carregarPdf(file, zid, key) {
+  const k = zid.replace('fz-','');
+  document.getElementById(zid).classList.remove('err','loaded');
+  $(`fz-icon-${k}`).textContent = '⏳';
+  $(`fz-name-${k}`).textContent = 'Processando PDF...';
+  $(`fz-sub-${k}`).textContent  = 'Extraindo parâmetros';
+  try {
+    const parametros = await lerParametrosPdf(await file.arrayBuffer());
+    const doc = construirDocDoPdf(parametros);
+    const mapeados = Object.keys(parametros).filter(p => MAPEAMENTO.some(m => m.CampoPdf === p)).length;
+    S[key].doc = doc; S[key].nome = file.name; S[key].raw = '';
+    zonaOk(zid, key, file.name, '📋', `${mapeados} campos mapeados · ${(file.size/1024).toFixed(1)} KB`);
+  } catch (err) {
+    zonaErro(zid, key, 'Erro ao ler PDF: ' + err.message);
+  }
+  $('btn-cmp').disabled = !(S.padrao.doc && S.cliente.doc);
+}
+
+function zonaOk(zid, key, nome, icon, sub) {
+  const z = document.getElementById(zid);
+  z.classList.remove('err'); z.classList.add('loaded');
+  $(`fz-icon-${key}`).textContent = '✅';
+  $(`fz-name-${key}`).textContent = nome;
+  $(`fz-sub-${key}`).textContent  = sub;
+}
+
+function zonaErro(zid, key, msg) {
+  S[key].doc = null; S[key].nome = '';
+  const z = document.getElementById(zid);
+  z.classList.remove('loaded'); z.classList.add('err');
+  $(`fz-icon-${key}`).textContent = '❌';
+  $(`fz-name-${key}`).textContent = 'Erro ao carregar';
+  $(`fz-sub-${key}`).textContent  = msg;
+}
+
+/* ── COMPARISON ── */
+function comparar(dP,dC){
+  const diffs=[];
+  const cDict={};
+  dC.querySelectorAll('ROOT > VAR').forEach(el=>{ cDict[el.getAttribute('COD')||'']=el; });
+  const pCods=new Set();
+  dP.querySelectorAll('ROOT > VAR').forEach(elP=>{
+    const cod=elP.getAttribute('COD')||'';
+    pCods.add(cod);
+    if(!cDict[cod]){ diffs.push({Cod:cod,CampoDivergente:'PARAMETRO_AUSENTE',Esperado:'EXISTE',Encontrado:'NAO ENCONTRADO'}); return; }
+    const elC=cDict[cod];
+    const vlP=elP.getAttribute('VL')??'', vlC=elC.getAttribute('VL')??'';
+    if(vlP!==vlC) diffs.push({Cod:cod,CampoDivergente:'VL',Esperado:vlP,Encontrado:vlC});
+    const ixP=elP.getAttribute('IX')??'', ixC=elC.getAttribute('IX')??'';
+    if(ixP!==ixC) diffs.push({Cod:cod,CampoDivergente:'IX',Esperado:ixP,Encontrado:ixC});
+  });
+  dC.querySelectorAll('ROOT > VAR').forEach(elC=>{
+    const cod=elC.getAttribute('COD')||'';
+    if(!pCods.has(cod)) diffs.push({Cod:cod,CampoDivergente:'PARAMETRO_EXTRA',Esperado:'NAO EXISTE',Encontrado:'EXISTE'});
+  });
+  return diffs;
+}
+
+/* ── RUN ── */
+function runComparacao(){
+  if(!S.padrao.doc||!S.cliente.doc) return;
+  S.screen='loading'; S.loadStep=0;
+  renderScreen();
+  let step=0;
+  const iv=setInterval(()=>{
+    step++; S.loadStep=step;
+    const el=document.getElementById('l-steps');
+    if(el) el.innerHTML=stepsHtml(step);
+    if(step>=LOAD_STEPS.length){
+      clearInterval(iv);
+      setTimeout(()=>{
+        S.diffs=comparar(S.padrao.doc,S.cliente.doc);
+        S.filtro='TODOS'; S.screen='result';
+        updateChips(); renderScreen();
+      },300);
+    }
+  },260);
+}
+
+function stepsHtml(done){
+  return LOAD_STEPS.map((s,i)=>`<div class="lstep ${i<done?'done':i===done?'cur':''}">${s}</div>`).join('');
+}
+
+function updateChips(){
+  const tot=S.diffs.length;
+  const aus=S.diffs.filter(d=>d.CampoDivergente==='PARAMETRO_AUSENTE').length;
+  const ext=S.diffs.filter(d=>d.CampoDivergente==='PARAMETRO_EXTRA').length;
+  const vl =S.diffs.filter(d=>d.CampoDivergente==='VL').length;
+  const ix =S.diffs.filter(d=>d.CampoDivergente==='IX').length;
+  const div=vl+ix;
+  set('ct',tot); set('ca',aus); set('ce',ext); set('cd',div);
+  set('fc-t',tot); set('fc-a',aus); set('fc-e',ext); set('fc-vl',vl); set('fc-ix',ix);
+}
+
+/* ── RENDER ── */
+function renderScreen(){
+  const show=(id,v)=>{const el=document.getElementById(id);if(el)el.style.display=v?'':'none';};
+  const isUpload  = S.screen==='upload';
+  const isResult  = S.screen==='result';
+
+  show('upload-panel', isUpload);
+  show('upload-info',  isUpload);
+  show('breadcrumb',  !isUpload);
+  show('filter-nav',   isResult);
+  show('flbl',         isResult);
+  show('btn-nova',     isResult);
+  show('search-wrap',  isResult);
+  $('btn-json').disabled=!isResult;
+  $('btn-csv').disabled=!isResult;
+
+  const pc=document.getElementById('page-content');
+
+  if(S.screen==='upload'){
+    pc.innerHTML='';
+  }
+  else if(S.screen==='loading'){
+    pc.innerHTML=`
+    <div class="loading-screen">
+      <div class="loading-wrap">
+        <div class="spinner-ring"></div>
+        <div class="loading-title">Validando parâmetros...</div>
+        <div class="loading-sub">Comparando dados do medidor com o XML padrão</div>
+        <div class="loading-steps" id="l-steps">${stepsHtml(0)}</div>
+      </div>
+    </div>`;
+  }
+  else if(S.screen==='result'){
+    const bc=document.getElementById('breadcrumb');
+    bc.innerHTML=`<span style="color:#AAA">Padrão:</span>&nbsp;<span style="color:#555;font-weight:500">${esc(S.padrao.nome)}</span>&nbsp;<span style="color:#CCC;margin:0 6px">·</span><span style="color:#AAA">Cliente:</span>&nbsp;<span style="color:#555;font-weight:500">${esc(S.cliente.nome)}</span>`;
+    const tot=S.diffs.length;
+    const pass=tot===0;
+    const now=new Date().toLocaleString('pt-BR');
+    pc.innerHTML=`
+    <div class="result-screen">
+      <div class="result-banner ${pass?'rb-pass':'rb-fail'}">
+        <div class="rb-icon">${pass?'✓':'✕'}</div>
+        <div class="rb-body">
+          <div class="rb-title">${pass?'Aprovado — nenhuma divergência encontrada':`Reprovado — ${tot} divergência${tot!==1?'s':''} encontrada${tot!==1?'s':''}`}</div>
+          <div class="rb-sub">${pass?'Todos os parâmetros estão de acordo com o XML padrão.':'Os parâmetros abaixo estão em divergência com o XML padrão (gabarito).'}</div>
+          <div class="rb-meta"><span>${esc(S.padrao.nome)} vs. ${esc(S.cliente.nome)}</span><span>${now}</span></div>
+        </div>
+        <div class="rb-actions">
+          <button class="btn-rb-nova" onclick="resetar()">↺ Nova Validação</button>
+        </div>
+      </div>
+      <div class="tbl-card">
+        <div class="tbl-card-hdr">
+          <div class="tbl-card-title">${pass?'Resultado da comparação':'Divergências encontradas'}</div>
+          <span class="cbadge ${pass?'cbadge-p':'cbadge-f'}" id="count-badge">${pass?'✓ Sem divergências':tot+' divergência'+(tot!==1?'s':'')}</span>
+        </div>
+        <div id="tbl-wrap">
+          <table class="diff-tbl" id="diff-tbl" ${pass?'style="display:none"':''}>
+            <thead>
+              <tr>
+                <th style="width:195px">COD</th>
+                <th style="width:145px">Tipo</th>
+                <th>Esperado (Padrão)</th>
+                <th>Encontrado (Cliente)</th>
+              </tr>
+            </thead>
+            <tbody id="diff-tbody"></tbody>
+          </table>
+          <div class="empty-state" id="empty-state" ${pass?'':'style="display:none"'}>
+            <span class="empty-icon">${pass?'✅':'🔍'}</span>
+            ${pass?'Todos os parâmetros estão conformes com o XML padrão.':'Nenhuma divergência para o filtro selecionado.'}
+          </div>
+        </div>
+      </div>
+    </div>`;
+    document.querySelectorAll('.filt-item').forEach(el=>el.classList.remove('active'));
+    document.querySelector('.filt-item').classList.add('active');
+    if(!pass) renderTabela();
+  }
+}
+
+function renderTabela(){
+  const tbody=document.getElementById('diff-tbody');
+  const empty=document.getElementById('empty-state');
+  const tbl  =document.getElementById('diff-tbl');
+  const badge=document.getElementById('count-badge');
+  if(!tbody) return;
+
+  const q=(document.getElementById('search-input')?.value||'').trim().toUpperCase();
+  const filtered=S.diffs.filter(d=>{
+    if(S.filtro!=='TODOS' && d.CampoDivergente!==S.filtro) return false;
+    if(q && !d.Cod.toUpperCase().includes(q)) return false;
+    return true;
+  });
+
+  if(badge) badge.textContent=`${filtered.length} divergência${filtered.length!==1?'s':''}`;
+
+  if (!filtered.length) {
+    tbody.innerHTML = '';
+    if (tbl)   tbl.style.display   = 'none';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (tbl)   tbl.style.display   = '';
+  if (empty) empty.style.display = 'none';
+
+  tbody.innerHTML=filtered.map((d,i)=>{
+    const bc=d.CampoDivergente==='PARAMETRO_AUSENTE'?'db-aus':d.CampoDivergente==='PARAMETRO_EXTRA'?'db-ext':'db-div';
+    const bl=d.CampoDivergente==='PARAMETRO_AUSENTE'?'AUSENTE':d.CampoDivergente==='PARAMETRO_EXTRA'?'EXTRA':d.CampoDivergente;
+    return `<tr>
+      <td class="td-cod">${esc(d.Cod)}</td>
+      <td><span class="dbadge ${bc}">${bl}</span></td>
+      <td class="td-exp">${valCell(d.Esperado,'e'+i)}</td>
+      <td class="td-enc">${valCell(d.Encontrado,'f'+i)}</td>
+    </tr>`;
+  }).join('');
+}
+
+function valCell(val,uid){
+  const MAX=70; const safe=esc(val);
+  if(val.length<=MAX) return `<span style="font-family:'Courier New',monospace;font-size:11px">${safe}</span>`;
+  return `<span class="val-short" id="vs-${uid}">${esc(val.slice(0,MAX))}…</span><span class="val-full" id="vf-${uid}">${safe}</span><span class="val-toggle" onclick="toggleVal('${uid}')">▼ ver completo</span>`;
+}
+
+function toggleVal(uid){
+  const vf=document.getElementById('vf-'+uid);
+  const vs=document.getElementById('vs-'+uid);
+  const open=vf.classList.toggle('open');
+  if(vs) vs.classList.toggle('hide',open);
+  const tog=document.querySelector(`.val-toggle[onclick="toggleVal('${uid}')"]`);
+  if(tog) tog.textContent=open?'▲ recolher':'▼ ver completo';
+}
+
+function setFilter(f,el){
+  S.filtro=f;
+  document.querySelectorAll('.filt-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  renderTabela();
+}
+
+/* ── RESET ── */
+function resetar(){
+  S.screen='upload'; S.diffs=[]; S.filtro='TODOS';
+  S.padrao={doc:null,nome:'',raw:''}; S.cliente={doc:null,nome:'',raw:''};
+  ['padrao','cliente'].forEach(k=>{
+    const z=document.getElementById('fz-'+k);
+    z.classList.remove('loaded','err');
+    $(`fz-icon-${k}`).textContent='📄';
+    $(`fz-name-${k}`).textContent=k+'.xml / folha.pdf';
+    $(`fz-sub-${k}`).textContent='Arraste um arquivo .xml ou .pdf';
+    document.getElementById('inp-'+k).value='';
+  });
+  ['ct','ca','ce','cd','fc-t','fc-a','fc-e','fc-vl','fc-ix'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='—';});
+  $('btn-cmp').disabled=true;
+  renderScreen();
+}
+
+/* ── EXPORT ── */
+function exportarJSON(){
+  const payload={geradoEm:new Date().toISOString(),arquivoPadrao:S.padrao.nome,arquivoCliente:S.cliente.nome,resultado:S.diffs.length===0?'APROVADO':'REPROVADO',totalDivergencias:S.diffs.length,divergencias:S.diffs};
+  dl(JSON.stringify(payload,null,2),'resultado_validacao.json','application/json');
+}
+function exportarCSV(){
+  const sep=';';
+  const rows=[['COD','CampoDivergente','Esperado','Encontrado'].join(sep),...S.diffs.map(d=>[d.Cod,d.CampoDivergente,d.Esperado,d.Encontrado].map(v=>'"'+v.replace(/"/g,'""')+'"').join(sep))];
+  dl('﻿'+rows.join('\r\n'),'resultado_validacao.csv','text/csv;charset=utf-8');
+}
+function dl(content,name,type){
+  const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(new Blob([content],{type})),download:name});
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+/* ── UTILS ── */
+function $(id){return document.getElementById(id);}
+function set(id,v){const el=document.getElementById(id);if(el)el.textContent=v;}
+function esc(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded',()=>{
+  ['fz-padrao','fz-cliente'].forEach(zid=>{
+    document.getElementById(zid).addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();document.getElementById(zid==='fz-padrao'?'inp-padrao':'inp-cliente').click();}
+    });
+  });
+  renderScreen();
+});
+</script>
+</body>
+</html>

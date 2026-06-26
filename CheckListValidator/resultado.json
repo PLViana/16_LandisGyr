@@ -1,0 +1,870 @@
+{
+  "Status": "FAIL",
+  "QuantidadeErros": 144,
+  "Diferencas": [
+    {
+      "Cod": "TIPO_MEDIDOR",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TIPO_MODELO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MODELO_MEDIDOR",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TENSAO_NOMINAL",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TIPO_BERCO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "FONTE_AUXILIAR",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "ZONA_HORARIA",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TEMPO_ENERGIZACAO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TEMPO_COMANDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "INTERFACES",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "INTERFACE_ATE_40V",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "INTERFACE_ACIMA_40V",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "INTERFACESLGMES",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "GERACAO_RF",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_TARIFARIO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TAMPERS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TAMPERS_CFG_GERAL",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CMD_PARAMETRIZAVEIS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "RF_RADIO_INFO_NETWORKID",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "RF_RADIO_INFO_COUNTRY",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "RF_RADIO_INFO_POWER",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "RF_DST_FLAG",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "RF_RADIO_INFO_GMT",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "RF_RADIO_INFO_TIMEZONE",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "RF_RADIO_ANTENA",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "COMANDOS_ABNT_INTERFACES",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MODO_ABNT",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CANAIS_MEDICAO_1_20",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CANAIS_MEDICAO_21_40",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CANAIS_LEDS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DEMANDA_1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DEMANDA_1A",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "REPOSICAO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TARIFA_COR_1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TARIFA_COR_1A",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "PARAMETROS_ADICIONAIS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SINCRONISMO_1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SINCRONISMO_1A",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CONSTANTE_TP_TC",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "FERIADOS1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "FERIADOS2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "STATUS_POSTO_HORARIO_UNIVERSAL",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DIA1_DATA1_SEG_CONJ2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MES1_DATA1_SEG_CONJ2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DIA2_DATA1_SEG_CONJ2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MES2_DATA1_SEG_CONJ2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DIA1_DATA2_SEG_CONJ2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MES1_DATA2_SEG_CONJ2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DIA2_DATA2_SEG_CONJ2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MES2_DATA2_SEG_CONJ2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS3",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS4",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS5",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS6",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS7",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS8",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEGMENTOS_HORARIO_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEGMENTOS_HORARIO_SEGUNDOS_SAB",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEGMENTOS_HORARIO_SEGUNDOS_DOM",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEGMENTOS_HORARIO_SEGUNDOS_FER",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS2_HORARIOS1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS2_HORARIOS2",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS2_HORARIOS3",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS2_HORARIOS4",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS2_HORARIOS5",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS2_HORARIOS6",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS2_HORARIOS7",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "SEG_HORARIOS2_HORARIOS8",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CONJUNTO2_HORARIOS_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_DOMINGOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_SEGUNDAS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_TER\u00C7AS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_QUARTAS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_QUINTAS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_SEXTAS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_SABADOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_FERIADOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_STATUS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_DOMINGOS_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_SEGUNDAS_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_TER\u00C7AS_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_QUARTAS_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_QUINTAS_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_SEXTAS_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_SABADOS_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "POSTO_HORARIO_UNIVERSAL_FERIADOS_SEGUNDOS",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CALENDARIO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DIA_FIM_INVERNO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MES_FIM_INVERNO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DIA_FIM_VERAO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MES_FIM_VERAO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "HORARIO_REATIVO_1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "HORARIO_REATIVO_1A",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MOSTRADORES",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MODO_NORMAL",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "MODO_ALTERNADO",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "TABELA_QUALIDADE_ENERGIA",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "PARAM_QUALIDADE_ENERGIA",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DATA_HORA",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "NUMERADOR_MULTIPLICACAO_KE",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DENOMINADOR_MULTIPLICACAO_KE",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "NUMERADOR_MULTIPLICACAO_KH",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DENOMINADOR_MULTIPLICACAO_KH",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "NUMERADOR_MULTIPLICACAO_KP",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "DENOMINADOR_MULTIPLICACAO_KP",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "GRANDEZAS_CANAIS_1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "GRANDEZAS_CANAIS_1A",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CANAIS_1_1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CANAIS_1_1A",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CANAIS_2_1",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "CANAIS_2_1A",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "GRANDEZAS_CANAIS_LGMES",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_40",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_41",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_42",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_43",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_44",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_45",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_47",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_48",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_49",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_4A",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_4B",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_4C",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_4D",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_4E",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_4F",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_50",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_51",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_52",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_53",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_57",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_58",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_59",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_5A",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_5B",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_5E",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_MONITOREVENTO_5F",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_FIRMWARE_MONITOREVENTO_00",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_FIRMWARE_MONITOREVENTO_01",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    },
+    {
+      "Cod": "E2_0F_FIRMWARE_MONITOREVENTO_02",
+      "CampoDivergente": "PARAMETRO_EXTRA",
+      "Esperado": "NAO EXISTE",
+      "Encontrado": "EXISTE"
+    }
+  ]
+}
