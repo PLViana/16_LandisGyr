@@ -12,3 +12,24 @@ C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net1
 C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ChecklistValidator.pdb
 C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ChecklistValidator.genruntimeconfig.cache
 C:\Users\Kenzo\source\repos\ChecklistValidator\ChecklistValidator\obj\Debug\net10.0\ref\ChecklistValidator.dll
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\ChecklistValidator.exe
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\ChecklistValidator.deps.json
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\ChecklistValidator.runtimeconfig.json
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\ChecklistValidator.dll
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\ChecklistValidator.pdb
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\UglyToad.PdfPig.dll
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\UglyToad.PdfPig.Core.dll
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\UglyToad.PdfPig.Fonts.dll
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\UglyToad.PdfPig.Tokenization.dll
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\bin\Debug\net10.0\UglyToad.PdfPig.Tokens.dll
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\ChecklistValidator.csproj.AssemblyReference.cache
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\ChecklistValidator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\ChecklistValidator.AssemblyInfoInputs.cache
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\ChecklistValidator.AssemblyInfo.cs
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\ChecklistValidator.csproj.CoreCompileInputs.cache
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\Checklis.F0F786FC.Up2Date
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\ChecklistValidator.dll
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\refint\ChecklistValidator.dll
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\ChecklistValidator.pdb
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\ChecklistValidator.genruntimeconfig.cache
+C:\Users\Kenzo\Desktop\lands back\CheckListValidator\obj\Debug\net10.0\ref\ChecklistValidator.dll

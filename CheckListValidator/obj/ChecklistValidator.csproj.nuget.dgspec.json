@@ -1,35 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kenzo\\source\\repos\\ChecklistValidator\\ChecklistValidator\\ChecklistValidator.csproj": {}
+    "C:\\Users\\Kenzo\\Desktop\\lands back\\CheckListValidator\\ChecklistValidator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kenzo\\source\\repos\\ChecklistValidator\\ChecklistValidator\\ChecklistValidator.csproj": {
+    "C:\\Users\\Kenzo\\Desktop\\lands back\\CheckListValidator\\ChecklistValidator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kenzo\\source\\repos\\ChecklistValidator\\ChecklistValidator\\ChecklistValidator.csproj",
+        "projectUniqueName": "C:\\Users\\Kenzo\\Desktop\\lands back\\CheckListValidator\\ChecklistValidator.csproj",
         "projectName": "ChecklistValidator",
-        "projectPath": "C:\\Users\\Kenzo\\source\\repos\\ChecklistValidator\\ChecklistValidator\\ChecklistValidator.csproj",
+        "projectPath": "C:\\Users\\Kenzo\\Desktop\\lands back\\CheckListValidator\\ChecklistValidator.csproj",
         "packagesPath": "C:\\Users\\Kenzo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kenzo\\source\\repos\\ChecklistValidator\\ChecklistValidator\\obj\\",
+        "outputPath": "C:\\Users\\Kenzo\\Desktop\\lands back\\CheckListValidator\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Kenzo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Kenzo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -44,11 +39,18 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
+          "dependencies": {
+            "UglyToad.PdfPig": {
+              "target": "Package",
+              "version": "[1.7.0-custom-5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -65,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
